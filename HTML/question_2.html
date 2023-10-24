@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Customer Survey Form</title>
+        <style>
+            html{
+                background-color: rgb(49, 136, 218);
+            }
+            h1{
+                text-align: center;
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+            }
+            #form{
+                background-color: white;
+                margin-left: 20%;
+                width: 60%;
+                padding: 10px;
+            }
+            .details{
+                float: left;
+                margin-right: 40px;
+            }
+            footer{
+                text-align: center;
+                color: white;
+            }
+            .break{
+                clear: left;
+            }
+            input{
+                margin-top: 5px;
+            }
+            select{
+                margin-top: 7px;
+            }
+            .submit{
+                border-style: none;
+                background-color: rgb(61, 85, 223);
+                color: white;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Custome Survey Form</h1>
+        <div id="form">
+            <form action="" id="form">
+                <div class="details"><p>First Name <br><input type="text" placeholder="First letter in Capital" id="firstname" required></p></div>
+                <div class="details"><p>Last Name <br><input type="text" placeholder="First letter in Capital" id="lastname" required></p></div>
+                <br class="break">
+                <div class="details"><p>Date of Birth <br><input type="text" placeholder="dd-mm-yy" id="dob" required></p></div>
+                <div class="details"><p>Country <br><select name="country" id="country" required>
+                    <option value="">select country</option>
+                    <option value="Japan">Japan</option>
+                    <option value="China">China</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="India">India</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="Thailan">Thailand</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Vietnam">Vietnam</option>
+                </select></p></div>
+                <br class="break">
+                <p>Gender <br><input type="checkbox" id="male" value="male" class="gender">
+                <label for="male">Male</label>
+                <input type="checkbox" id="female" value="female" class="gender">
+                <label for="gender">Female</label>
+                <input type="checkbox" id="notspecified" value="not specified" class="gender">
+                <label for="gender">Prefer not to say</label></p>
+                <p>profession <br><input type="text" id="profession" required></p>
+                <p>email <br><input type="email" id="email" required></p>
+                <p>Mobile number <br><input type="tel" id="number" required></p>
+                <div class="details"><p><button class="submit" onclick="
+                    output()">submit</button></p></div>
+                <div class="details"><p><button class="submit" onclick="reset()">reset</button></p></div>
+                <br class="break">
+            </form> 
+        </div>
+        <footer>
+            <p>@2023 Customer Survey Form. All Rights Reserved</p>
+        </footer>    
+        
+        <script>
+            function reset(){
+                document.getElementById("form").reset();
+            }
+            function output(){            
+            let gender;
+            let male=document.getElementById("male");
+            let female=document.getElementById("female");
+            let nsp=document.getElementById("notspecified");
+            if(male.checked==true && female.checked==true || female.checked==true && nsp.checked==true || male.checked==true && nsp.checked==true){
+                alert("Select one field in Gender")
+            }
+            else if(male.checked==true){
+                gender=document.getElementById("male").value;
+            }
+            else if(female.checked==true){
+                gender=document.getElementById("female").value;
+            }
+            else if(nsp.checked==true){
+                gender=document.getElementById("notspecified").value;
+            }
+
+            alert(`Name: ${document.getElementById("firstname").value+document.getElementById("lastname").value},
+DOB: ${document.getElementById("dob").value},
+Country: ${document.getElementById("country").value},
+Gender: ${gender},
+Profession: ${document.getElementById("profession").value},
+email: ${document.getElementById("email").value},
+Mobile Number: ${document.getElementById("number").value}`)
+            }
+        </script>
+    </body>"
+</html>
